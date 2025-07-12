@@ -1,7 +1,7 @@
 import json
 import os
 
-tasks_list = []
+
 
 def user_input():
     #This function takes task name as user input
@@ -73,8 +73,14 @@ def delete_task():
 
 
 def save_tasks(filename, tasks_list):
+
+    #It will save data to the file
+    #json.dump() is used to covert python Data Structures to the JSON format and write directly to the file. 
     with open(filename, "w") as file:
         json.dump(tasks_list, file, indent = 4)
+        print("Tasks have been saved successfully.")
+
+
 
 def load_tasks(filename):
     if os.path.exists(filename):
@@ -83,9 +89,11 @@ def load_tasks(filename):
     else:
         return []
 
-
+filename = "tasks.json"
+tasks_list = load_tasks(filename)
 
 while (True):
+
     print("\n\n---------Main Menu-------------")
     print("\nEnter 1 to add a task. \nEnter 2 to view tasks. \nEnter 3 to complete task. \nEnter 4 to delete a task. \nEnter 5 to Exit.\n")
     try:
@@ -103,8 +111,9 @@ while (True):
             delete_task()
 
         elif (choice == 5):
+            save_tasks(filename, tasks_list)
             print("You have opted to Exit. Ba-Bye 👋")
-            exit()
+            break
 
         else:
             print("Enter appropriate choice.")

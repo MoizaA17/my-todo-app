@@ -1,0 +1,14 @@
+[
+    {
+        "task_name": "shopping",
+        "status": "completed \u2714"
+    },
+    {
+        "task_name": "quizz",
+        "status": "incomplete"
+    },
+    {
+        "task_name": "assignment",
+        "status": "completed \u2714"
+    }
+]
