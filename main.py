@@ -2,6 +2,18 @@ import json
 import os
 
 
+def askPriority():
+    #This function will ask the user for the priority of its task
+
+    while(True):
+        valid_priorities = ["high", "medium", "low"]
+        priority = input("Enter your task's priority (high/medium/low): ")
+
+        if priority in valid_priorities:
+            return priority.lower()
+        else:
+            print("Enter valid priority. (high/medium/low)")    
+
 
 def user_input():
     #This function takes task name as user input
@@ -24,7 +36,7 @@ def add_task():
 
     #This function adds a new task to the tasksList using append. 
 
-    task = {"task_name": user_input(), "status": "incomplete"}
+    task = {"task_name": user_input(), "status": "incomplete", "priority": askPriority()}
     tasks_list.append(task)
     print("The task is added Successfully...🤩")
 
@@ -35,7 +47,7 @@ def view_tasks():
 
     print("\nThe total number of tasks are: ",len(tasks_list))
     for task in tasks_list:
-        print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"))
+        print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"), "\nTask Priority: ", task.get("priority"), "\n")
 
 
 def complete_task():
@@ -83,6 +95,9 @@ def save_tasks(filename, tasks_list):
 
 
 def load_tasks(filename):
+
+     #It will load data from the file
+     ##json.load() is used to read from the file and covert JSON format to the python Data Structures . 
     if os.path.exists(filename):
         with open(filename, "r") as file:
             return json.load(file)
