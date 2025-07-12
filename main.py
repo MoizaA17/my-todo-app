@@ -32,13 +32,26 @@ def isTaskPresent():
     return None, False
 
 
+def setDueDate():
+    while(True):
+        dueDate = input("Enter Due Date (DD-MM-YYYY) leave blank if no due date: ")
+
+        if(dueDate == ""):
+            return None
+    
+        if(len(dueDate) == 10):
+            return dueDate
+    
+        else:
+            print("Re-Enter the due date in a proper format (DD-MM-YYYY)")
+
 def add_task(): 
 
     #This function adds a new task to the tasksList using append. 
 
-    task = {"task_name": user_input(), "status": "incomplete", "priority": askPriority()}
+    task = {"task_name": user_input(), "status": "incomplete", "priority": askPriority(), "due date": setDueDate()}
     tasks_list.append(task)
-    print("The task is added Successfully...🤩")
+    print("\nThe task is added Successfully...🤩")
 
 
 def view_tasks():
@@ -47,7 +60,7 @@ def view_tasks():
 
     print("\nThe total number of tasks are: ",len(tasks_list))
     for task in tasks_list:
-        print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"), "\nTask Priority: ", task.get("priority"), "\n")
+        print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"), "\nTask Priority: ", task.get("priority"), "\nTask Due Date: ", task.get("due date"), "\n")
 
 
 def complete_task():
@@ -103,6 +116,8 @@ def load_tasks(filename):
             return json.load(file)
     else:
         return []
+
+
 
 filename = "tasks.json"
 tasks_list = load_tasks(filename)
