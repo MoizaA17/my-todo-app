@@ -1,3 +1,6 @@
+import json
+import os
+
 tasks_list = []
 
 def user_input():
@@ -67,6 +70,19 @@ def delete_task():
 
     else:
         print("\nThe task does not exist in your To-Do List.")
+
+
+def save_tasks(filename, tasks_list):
+    with open(filename, "w") as file:
+        json.dump(tasks_list, file, indent = 4)
+
+def load_tasks(filename):
+    if os.path.exists(filename):
+        with open(filename, "r") as file:
+            return json.load(file)
+    else:
+        return []
+
 
 
 while (True):
