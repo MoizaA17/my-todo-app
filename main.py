@@ -7,10 +7,10 @@ def askPriority():
 
     while(True):
         valid_priorities = ["high", "medium", "low"]
-        priority = input("Enter your task's priority (high/medium/low): ")
+        priority = input("Enter your task's priority (high/medium/low): ").lower().strip()
 
         if priority in valid_priorities:
-            return priority.lower()
+            return priority
         else:
             print("Enter valid priority. (high/medium/low)")    
 
@@ -18,7 +18,7 @@ def askPriority():
 def user_input():
     #This function takes task name as user input
     
-    task_name = input("\nEnter Task name: ")
+    task_name = input("\nEnter Task name: ").strip()
     return task_name
 
 def isTaskPresent():
@@ -30,7 +30,7 @@ def isTaskPresent():
             return index, True
            
     return None, False
-
+   
 
 def setDueDate():
     while(True):
@@ -61,7 +61,7 @@ def view_tasks():
     print("\nThe total number of tasks are: ",len(tasks_list))
     for task in tasks_list:
         print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"), "\nTask Priority: ", task.get("priority"), "\nTask Due Date: ", task.get("due date"), "\n")
-
+ 
 
 def complete_task():
 
@@ -72,7 +72,7 @@ def complete_task():
 
     if(isPresent):
         if (tasks_list[index]["status"] == "incomplete"):
-            tasks_list[index]["status"] = "completed ✔"
+            tasks_list[index]["status"] = "completed"
             print("\nThe status is updated. The new status is: \n")
             print("Task Name: ", tasks_list[index]["task_name"], "\nTask Status: ", tasks_list[index]["status"])
 
@@ -118,6 +118,72 @@ def load_tasks(filename):
         return []
 
 
+def filter_tasks():
+    while True:
+        filter_choice = input("Enter filter choice: \n1 for Status. \n2 for Priority: ")
+        if (filter_choice == "1"):
+            status_filter()
+            break
+    
+        elif(filter_choice == "2"):
+            priority_filter()
+            break
+
+        else:
+            print("\nEnter valid choice \n1 for Status. \n2 for Priority: ")
+
+
+def status_filter():
+    filtered_tasks_list = []
+    while True:
+        status_choice = input("\nEnter status (completed/incomplete): ").lower().strip()
+        if status_choice in ["completed", "incomplete"]:
+            break
+        else:
+            print("\nEnter valid choice")
+    
+    for task in tasks_list:
+        if (task["status"] == status_choice):
+            filtered_tasks_list.append(task)
+
+    if not filtered_tasks_list:
+        print("No such tasks exist with ", status_choice, " status.")
+    else:
+        view_filtered_tasks(filtered_tasks_list)
+
+
+
+def priority_filter():
+    filtered_tasks_list = []
+    while True:
+        priority_choice = input("\nEnter status (high/medium/low): ").lower().strip()
+        if priority_choice in ["high", "medium", "low"]:
+            break
+        else:
+            print("\nEnter valid choice")
+    
+    for task in tasks_list:
+       if (task["priority"] == priority_choice):
+           filtered_tasks_list.append(task)
+
+    if not filtered_tasks_list:
+        print("No such tasks exist with ", priority_choice, " status.")
+    else:
+        view_filtered_tasks(filtered_tasks_list)
+       
+
+
+def view_filtered_tasks(filtered_tasks_list):
+
+    print("\nThe total number of filtered tasks are: ",len(filtered_tasks_list), "\n")
+    for task in filtered_tasks_list:
+        print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"), "\nTask Priority: ", task.get("priority"), "\nTask Due Date: ", task.get("due date"), "\n")
+ 
+ 
+
+
+
+
 
 filename = "tasks.json"
 tasks_list = load_tasks(filename)
@@ -125,7 +191,7 @@ tasks_list = load_tasks(filename)
 while (True):
 
     print("\n\n---------Main Menu-------------")
-    print("\nEnter 1 to add a task. \nEnter 2 to view tasks. \nEnter 3 to complete task. \nEnter 4 to delete a task. \nEnter 5 to Exit.\n")
+    print("\nEnter 1 to add a task. \nEnter 2 to view tasks. \nEnter 3 to complete task. \nEnter 4 to delete a task. \nEnter 5 to Filter Tasks. \nEnter 6 to Exit.\n")
     try:
         choice = int(input("Enter your choice:  "))
         if(choice == 1):
@@ -141,6 +207,9 @@ while (True):
             delete_task()
 
         elif (choice == 5):
+            filter_tasks()
+
+        elif (choice == 6):
             save_tasks(filename, tasks_list)
             print("You have opted to Exit. Ba-Bye 👋")
             break
