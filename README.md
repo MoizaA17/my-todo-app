@@ -53,9 +53,7 @@ Getting started with the To-Do List Manager is easy!
 
 I'm excited to continue improving this project! Here are some features I plan to implement next:
 
-* **Persistent Storage:** Save tasks to a file (e.g., JSON) so they are not lost when the application closes.
-* **Task Priorities:** Allow users to assign priorities (High, Medium, Low) to their tasks.
-* **Due Dates:** Add functionality to set and track due dates for tasks.
+* **Persistent Storage:** Save tasks to a file (e.g., JSON) so they are not lost when the application closes. ✔
 * **Filtering Options:** Enable users to filter tasks by status (complete/incomplete) or priority.
 
 ## Author 👩‍💻
