@@ -1,0 +1,26 @@
+[
+    {
+        "task_name": "quizz",
+        "status": "completed",
+        "priority": "high",
+        "due date": "14-07-2025"
+    },
+    {
+        "task_name": "nightout",
+        "status": "completed",
+        "priority": "medium",
+        "due date": "15-07-2025"
+    },
+    {
+        "task_name": "exam",
+        "status": "incomplete",
+        "priority": "high",
+        "due date": "18-07-2025"
+    },
+    {
+        "task_name": "shopping",
+        "status": "completed",
+        "priority": "low",
+        "due date": "31-08-2026"
+    }
+]
