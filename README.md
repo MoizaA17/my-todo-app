@@ -50,7 +50,7 @@ This project was a huge learning curve, and I'm particularly proud of the follow
 *See how tasks can be filtered by status/priority*
 
 ### Sorting Tasks
-![Demo: Sorting Tasks](To-Do_list_App/media/sortTasks.gif)
+![Demo: Sorting Tasks](media/sortTasks.gif)
 *See how tasks can be sorted by priority/due date*
 
 
