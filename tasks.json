@@ -6,6 +6,12 @@
         "due date": "14-07-2025"
     },
     {
+        "task_name": "nightout",
+        "status": "completed",
+        "priority": "medium",
+        "due date": "15-07-2025"
+    },
+    {
         "task_name": "exam",
         "status": "incomplete",
         "priority": "high",
@@ -16,11 +22,5 @@
         "status": "completed",
         "priority": "low",
         "due date": "31-08-2026"
-    },
-    {
-        "task_name": "assignment",
-        "status": "incomplete",
-        "priority": "medium",
-        "due date": null
     }
 ]
