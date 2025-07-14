@@ -41,12 +41,12 @@ This project was a huge learning curve, and I'm particularly proud of the follow
 ## Application Demo / Quick Demo 🎥
 
 ### Main Menu and Adding a Task
-![Demo: Main Menu and Adding a Task](To-Do_list_App/media/addTask.gif)
+![Demo: Main Menu and Adding a Task](media/addTask.gif)
 *A quick look at the interactive menu and adding a new task.*
 
 
 ### Filtering Tasks
-![Demo: Filtering Tasks](To-Do_list_App/media/statusFilter.gif)
+![Demo: Filtering Tasks](media/statusFilter.gif)
 *See how tasks can be filtered by status/priority*
 
 ### Sorting Tasks
