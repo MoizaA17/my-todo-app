@@ -1,26 +1,26 @@
 [
     {
-        "task_name": "shopping",
-        "status": "incomplete",
-        "priority": "low",
-        "due date": "10-10-2020"
+        "task_name": "quizz",
+        "status": "completed",
+        "priority": "high",
+        "due date": "14-07-2025"
     },
     {
-        "task_name": "quizz",
+        "task_name": "exam",
         "status": "incomplete",
         "priority": "high",
-        "due date": null
+        "due date": "18-07-2025"
+    },
+    {
+        "task_name": "shopping",
+        "status": "completed",
+        "priority": "low",
+        "due date": "31-08-2026"
     },
     {
         "task_name": "assignment",
         "status": "incomplete",
         "priority": "medium",
-        "due date": "10-10-2024"
-    },
-    {
-        "task_name": "movie",
-        "status": "incomplete",
-        "priority": "low",
         "due date": null
     }
 ]

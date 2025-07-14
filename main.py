@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 
 def askPriority():
@@ -20,6 +21,7 @@ def user_input():
     
     task_name = input("\nEnter Task name: ").strip()
     return task_name
+
 
 def isTaskPresent():
 
@@ -44,6 +46,7 @@ def setDueDate():
     
         else:
             print("Re-Enter the due date in a proper format (DD-MM-YYYY)")
+
 
 def add_task(): 
 
@@ -106,7 +109,6 @@ def save_tasks(filename, tasks_list):
         print("Tasks have been saved successfully.")
 
 
-
 def load_tasks(filename):
 
      #It will load data from the file
@@ -152,7 +154,6 @@ def status_filter():
         view_filtered_tasks(filtered_tasks_list)
 
 
-
 def priority_filter():
     filtered_tasks_list = []
     while True:
@@ -172,7 +173,6 @@ def priority_filter():
         view_filtered_tasks(filtered_tasks_list)
        
 
-
 def view_filtered_tasks(filtered_tasks_list):
 
     print("\nThe total number of filtered tasks are: ",len(filtered_tasks_list), "\n")
@@ -180,9 +180,34 @@ def view_filtered_tasks(filtered_tasks_list):
         print("Task Name: ", task.get("task_name"), "\nTask Status: ", task.get("status"), "\nTask Priority: ", task.get("priority"), "\nTask Due Date: ", task.get("due date"), "\n")
  
  
+def sort_tasks():
+    while True:
+        sort_choice = input("Enter filter choice: \n1 By Priority . \n2 By Due Date: ")
+        if (sort_choice == "1"):
+            priority_sort(tasks_list)
+            break
+    
+        elif(sort_choice == "2"):
+            dueDate_sort(tasks_list)
+            break
+
+        else:
+            print("\nEnter valid choice \n1 By Priority . \n2 By Due Date: ")
 
 
+def priority_sort(tasks):
+    priority_order = {"high": 1, "medium": 2, "low": 3}
+    
+    tasks.sort(key = lambda x: priority_order[x["priority"].lower()] )
 
+    view_filtered_tasks(tasks)
+
+
+def dueDate_sort(tasks):
+
+    tasks.sort(key= lambda t: datetime.strptime(t["due date"], "%d-%m-%Y") if t.get("due date") else datetime.max)
+
+    view_filtered_tasks(tasks)
 
 
 filename = "tasks.json"
@@ -191,7 +216,7 @@ tasks_list = load_tasks(filename)
 while (True):
 
     print("\n\n---------Main Menu-------------")
-    print("\nEnter 1 to add a task. \nEnter 2 to view tasks. \nEnter 3 to complete task. \nEnter 4 to delete a task. \nEnter 5 to Filter Tasks. \nEnter 6 to Exit.\n")
+    print("\nEnter 1 to add a task. \nEnter 2 to view tasks. \nEnter 3 to complete task. \nEnter 4 to delete a task. \nEnter 5 to Filter Tasks. \nEnter 6 to Sort Tasks. \nEnter 7 to Exit.\n")
     try:
         choice = int(input("Enter your choice:  "))
         if(choice == 1):
@@ -210,6 +235,9 @@ while (True):
             filter_tasks()
 
         elif (choice == 6):
+            sort_tasks()
+
+        elif (choice == 7):
             save_tasks(filename, tasks_list)
             print("You have opted to Exit. Ba-Bye 👋")
             break
